@@ -1,13 +1,15 @@
 import React from "react";
 import { Header } from "components/Header/Header";
 
-const Layout = ({ children }) => {
+type Props = {
+  children: React.ReactNode;
+};
+
+const Layout = ({ children }: Props) => {
   return (
     <>
       <Header />
-      <div className="menu"></div>
       <main>{children}</main>
-      {/* 共通のフッターなどを実装 */}
     </>
   );
 };
