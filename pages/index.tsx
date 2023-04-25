@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import Layout from "../components/Layout/Layout";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -15,6 +16,9 @@ export default function Home() {
       <Layout>
         <main className={styles.main}>
           <div>メインコンテンツー</div>
+          <Link href="/login">
+            ログイン
+          </Link>
         </main>
       </Layout>
     </>
