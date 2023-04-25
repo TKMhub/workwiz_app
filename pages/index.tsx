@@ -14,7 +14,7 @@ export default function Home() {
       </Head>
       <Layout>
         <main className={styles.main}>
-          <div>メインコンテンツ</div>
+          <div>メインコンテンツー</div>
         </main>
       </Layout>
     </>
