@@ -1,7 +1,24 @@
-.Header{
-background-color: aqua;
-    .Header2{
-    background-color: rgb(109, 211, 40);
+.Header {
+    // background-color: aqua;
+    height: 8vh;
+    display: flex;
+    align-items: center;
 
-}
+    &_WorkwizTop {
+        margin-left: 1rem;
+    }
+
+    &_hr {
+        border-bottom: 1.7px solid rgba(0, 0, 0, 0.171);
+    }
+
+    &_right {
+        margin-left: auto;
+        margin-right: 1rem;
+
+        &_item {
+            display: flex;
+            space-between: 1rem;
+        }
+    }
 }
