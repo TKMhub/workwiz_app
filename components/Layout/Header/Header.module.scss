@@ -1,15 +1,23 @@
+@import "@/styles/globals.module.scss";
+
 .Header {
     // background-color: aqua;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
     height: 8vh;
     display: flex;
     align-items: center;
+    position: fixed;
 
     &_WorkwizTop {
-        margin-left: 1rem;
+        margin-left: 10rem;
     }
 
     &_hr {
-        border-bottom: 1.7px solid rgba(0, 0, 0, 0.171);
+        opacity: 0.5;
+        border-bottom: 2px solid rgba(118, 118, 118, 0.171);
     }
 
     &_right {
@@ -18,7 +26,14 @@
 
         &_item {
             display: flex;
-            space-between: 1rem;
+            margin-right: 10rem;
+            & a {
+                color: $main-color;
+                margin-right: 50px;
+                text-decoration: none;
+                font-size: 18px;
+                font-weight: 500;
+            }
         }
     }
 }
