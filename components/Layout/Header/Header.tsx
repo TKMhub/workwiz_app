@@ -3,8 +3,7 @@ import React from "react";
 import styles from "./Header.module.scss";
 import Link from "next/link";
 
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 
 export const Header = () => {
   return (
@@ -20,15 +19,26 @@ export const Header = () => {
         />
         <div className={styles.Header_right}>
           <div className={styles.Header_right_item}>
-            <Link href="/">Home</Link>
-            <Link href="/blog">Blog</Link>
-            <Link href="/skill">Skill</Link>
-            <Link href="/contact">Contact</Link>
-            <Stack spacing={2} direction="row">
-      <Button variant="text">Text</Button>
-      <Button variant="contained">Contained</Button>
-      <Button variant="outlined">Outlined</Button>
-    </Stack>
+            <Link href="/" className={styles.Header_right_item_link}>
+              TOP
+            </Link>
+            <Link href="/blog" className={styles.Header_right_item_link}>
+              Blog
+            </Link>
+            <Link href="/skill" className={styles.Header_right_item_link}>
+              Skills
+            </Link>
+            <Link href="/contact" className={styles.Header_right_item_link}>
+              Contact
+            </Link>
+            <Link href="/login">
+              <Button
+                className={styles.Header_right_item_button}
+                variant="contained"
+              >
+                Login
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
