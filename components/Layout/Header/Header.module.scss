@@ -1,6 +1,5 @@
 @import "@/styles/globals.module.scss";
 
-
 .Header {
     position: fixed;
     top: 0;
@@ -14,6 +13,10 @@
     align-items: center;
     padding: 0 20px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+
+    &_link{
+        display: flex;
+    }
 
     &_WorkwizTop {
         margin-left: 10rem;

@@ -9,14 +9,16 @@ export const Header = () => {
   return (
     <>
       <div className={styles.Header}>
-        <Image
-          className={styles.Header_WorkwizTop}
-          src="/Workwiz_top.svg"
-          alt="Workwiz Logo"
-          width={170}
-          height={30}
-          priority
-        />
+        <Link href="/" className={styles.Header_link}>
+          <Image
+            className={styles.Header_WorkwizTop}
+            src="/Workwiz_top.svg"
+            alt="Workwiz Logo"
+            width={170}
+            height={30}
+            priority
+          />
+        </Link>
         <div className={styles.Header_right}>
           <div className={styles.Header_right_item}>
             <Link href="/" className={styles.Header_right_item_link}>

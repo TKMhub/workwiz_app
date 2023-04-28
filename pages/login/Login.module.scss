@@ -1,0 +1,15 @@
+@import "@/styles/globals.module.scss";
+
+.Login {
+  margin-top: $header-size;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 75vh;
+  color: $main-gray;
+  &_Box_Button {
+    background-color: $main-blue;
+    color: #fff;
+    font-weight: 600;
+  }
+}
