@@ -1,31 +1,34 @@
 @import "@/styles/globals.module.scss";
 
+
 .Header {
-    // background-color: aqua;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 60px;
-    height: 8vh;
+    height: $header-size;
+    background-color: #fff;
+    z-index: 100;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    position: fixed;
+    padding: 0 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 
     &_WorkwizTop {
         margin-left: 10rem;
-    }
-
-    &_hr {
-        opacity: 0.5;
-        border-bottom: 2px solid rgba(118, 118, 118, 0.171);
+        cursor: pointer;
     }
 
     &_right {
+        display: flex;
+        align-items: center;
         margin-left: auto;
         margin-right: 1rem;
 
         &_item {
             display: flex;
+            align-items: center;
             margin-right: 10rem;
             & a {
                 color: $main-color;

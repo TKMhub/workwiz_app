@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "@/styles/Home.module.css";
+import styles from "./Home.module.scss";
 import Layout from "../components/Layout/Layout";
 import Link from "next/link";
 
@@ -14,7 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <main className={styles.main}>
+        <main className={styles.Home}>
           <div>メインコンテンツー</div>
           <Link href="/login">
             ログイン
