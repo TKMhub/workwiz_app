@@ -33,12 +33,20 @@ export const Header = () => {
             <Link href="/contact" className={styles.Header_right_item_link}>
               Contact
             </Link>
-            <Link href="/login">
+            <Link href="/login" className={styles.Header_right_item_buttonSpace}>
               <Button
-                className={styles.Header_right_item_button}
+                className={styles.Header_right_item_buttonSpace_button}
                 variant="contained"
               >
                 Login
+              </Button>
+            </Link>
+            <Link href="/login/signUp" className={styles.Header_right_item_buttonSpace}>
+              <Button
+                className={styles.Header_right_item_buttonSpace_button}
+                variant="contained"
+              >
+                新規
               </Button>
             </Link>
           </div>

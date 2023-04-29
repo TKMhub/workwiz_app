@@ -14,6 +14,7 @@ import Link from "next/link";
 
 const index = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -21,6 +22,14 @@ const index = () => {
 
   const handleMouseDownPassword = (event: any) => {
     event.preventDefault();
+  };
+
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
   };
 
   return (
@@ -71,14 +80,19 @@ const index = () => {
               id="password"
               autoComplete="current-password"
               sx={{ mb: 5 }}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton
                       edge="end"
-                      color="primary"
+                      color={isFocused ? "primary" : "default"}
                       onClick={handleClickShowPassword}
                       onMouseDown={handleMouseDownPassword}
+                      sx={{
+                        fontSize: "1rem",
+                      }}
                     >
                       {showPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
