@@ -20,7 +20,7 @@ const index = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleMouseDownPassword = (event: any) => {
+  const handleMouseDownPassword = (event: React.MouseEvent) => {
     event.preventDefault();
   };
 
