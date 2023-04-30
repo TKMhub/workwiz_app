@@ -40,20 +40,20 @@
                 font-size: 18px;
                 font-weight: 500;
             }
-            &_buttonSpace {
-                margin-right: 20px;
-                &_button{
-                    background-color: #fff !important;
-                    border: 2px solid #0046c9 !important;
-                    color: $main-blue;
-                    font-weight: 600;
-                    &:hover {
-                        background-color: $main-blue !important;
-                        color: #fff !important;
-                        font-weight: 600;
-                    }
-                }
-            }
+            // &_buttonSpace {
+            //     margin-right: 20px;
+            //     &_button{
+            //         background-color: #fff;
+            //         border: 2px solid #0046c9;
+            //         color: $main-blue;
+            //         font-weight: 600;
+            //         &:hover {
+            //             background-color: $main-blue;
+            //             color: #fff;
+            //             font-weight: 600;
+            //         }
+            //     }
+            // }
         }
     }
 }
