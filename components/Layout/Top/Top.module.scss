@@ -1,5 +1,14 @@
 .Top{
     background-color: aquamarine;
     margin: 100px;
-    height: 100vh;
+    &_TechSelection {
+        &_front{            
+        }
+        &_style{            
+        }
+        &_back{            
+        }
+        &_host{            
+        }
+    }
 }
