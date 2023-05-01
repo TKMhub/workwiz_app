@@ -2,8 +2,11 @@
     // background-color: aquamarine;
     margin: 100px;
     &_TechSelection {
-        &__Contents{
-            margin-bottom: 30px;        
+        &_Contents{
+            margin-bottom: 30px;
+            p {
+                margin: 30px;
+            }  
         }
     }
 }

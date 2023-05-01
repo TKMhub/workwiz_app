@@ -32,7 +32,6 @@ const Top = () => {
               DOMを利用した高速な描画性能を提供し、パフォーマンスも最適化されます。
             </p>
           </div>
-          <br />
           <div className={styles.Top_TechSelection_Contents}>
             <h2>スタイル</h2>
             <br />
