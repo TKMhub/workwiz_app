@@ -7,7 +7,7 @@ const Top = () => {
     <>
       <div className={styles.Top}>
         <div className={styles.Top_TechSelection}>
-          <div className={styles.Top_TechSelection_front}>
+          <div className={styles.Top_TechSelection_Contents}>
             <h2>フロントエンド</h2>
             <br />
             <p>
@@ -33,7 +33,7 @@ const Top = () => {
             </p>
           </div>
           <br />
-          <div className={styles.Top_TechSelection_style}>
+          <div className={styles.Top_TechSelection_Contents}>
             <h2>スタイル</h2>
             <br />
             <p>
@@ -58,10 +58,9 @@ const Top = () => {
               は、CSSの拡張言語で、変数やネスト機能などを使用できます。効率的なスタイリングを行い、コードの管理やメンテナンスが容易になります。また、Sassのミックスインやパーシャル機能により、コードの再利用性が高まり、開発速度が向上します。
             </p>
           </div>
-          <br />
-          <br />
-          <div className={styles.Top_TechSelection_back}>
+          <div className={styles.Top_TechSelection_Contents}>
             <h2>バックエンド</h2>
+            <br />
             <p>
               <Image
                 src="/django-community.svg"
@@ -73,8 +72,9 @@ const Top = () => {
               は、Pythonで書かれた強力なWebフレームワークで、セキュリティ対策やデータベース処理が充実しています。開発速度の向上と堅牢なアプリケーションの構築が可能です。さらに、豊富な機能を持つ多くのサードパーティ製アプリケーションが利用でき、独自の機能拡張が容易です。
             </p>
           </div>
-          <div className={styles.Top_TechSelection_host}>
+          <div className={styles.Top_TechSelection_Contents}>
             <h2>ホスティングサービス</h2>
+            <br />
             <p>
               <Image
                 src="/vercel.svg"
