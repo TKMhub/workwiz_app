@@ -12,6 +12,8 @@ import Layout from "@/components/Layout/Layout";
 import styles from "./Login.module.scss";
 import Link from "next/link";
 
+import { styled } from "@mui/system";
+
 const index = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
@@ -31,6 +33,23 @@ const index = () => {
   const handleBlur = () => {
     setIsFocused(false);
   };
+
+  const ButtonSpace = styled("div")({
+    marginRight: "20px",
+  });
+  
+  const StyledButton = styled(Button)(({ theme }) => ({
+    backgroundColor: "#fff",
+    border: "2px solid #0046c9",
+    color: "#002A76",
+    fontWeight: "600",
+    width: "100%",
+    "&:hover": {
+      backgroundColor: "#002A76",
+      color: "#fff",
+      fontWeight: "600",
+    },
+  }));
 
   return (
     <>
@@ -100,7 +119,7 @@ const index = () => {
                 ),
               }}
             />
-            <Button
+            {/* <Button
               className={styles.Login_Box_Button}
               type="submit"
               fullWidth
@@ -109,7 +128,10 @@ const index = () => {
               sx={{ mt: 3, mb: 2 }}
             >
               Sign In
-            </Button>
+            </Button> */}
+            <ButtonSpace>
+                <StyledButton variant="contained">Sign in</StyledButton>
+            </ButtonSpace>
             <Link
               href="/login/forgotPassword"
               className={styles.Login_Box_Link}
