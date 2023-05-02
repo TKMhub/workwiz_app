@@ -14,7 +14,7 @@ const Top = () => {
               <Image
                 src="/nextjs-13.svg"
                 alt="nextjs Logo"
-                width={170}
+                width={130}
                 height={30}
                 priority
               />
@@ -64,7 +64,7 @@ const Top = () => {
               <Image
                 src="/django-community.svg"
                 alt="django Logo"
-                width={130}
+                width={110}
                 height={50}
                 priority
               />
@@ -78,7 +78,7 @@ const Top = () => {
               <Image
                 src="/vercel.svg"
                 alt="vercel Logo"
-                width={130}
+                width={120}
                 height={50}
                 priority
               />
