@@ -3,3 +3,40 @@
 .Home {
     margin-top: $header-size;
 }
+
+.Footer {
+    background-color: $main-blue;
+    color: #fff;
+    padding: 40px 0;
+    &_Inner {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      &_Box {
+        width: 30%;
+        &_Title {
+          margin-bottom: 20px;
+        }
+        &_Title > h3 {
+          font-size: 18px;
+          font-weight: 600;
+          border-bottom: 2px solid #fff;
+          padding-bottom: 10px;
+        }
+        &_Content {
+          font-size: 14px;
+          & > p {
+            margin-bottom: 10px;
+          }
+          & > p > span {
+            font-weight: 600;
+          }
+          & > p > br {
+            display: none;
+        }
+        }
+      }
+    }
+  }
