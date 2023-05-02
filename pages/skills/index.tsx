@@ -1,9 +1,10 @@
-import styles from "./Home.module.scss";
-import Layout from "../components/Layout/Layout";
+import React from "react";
+import styles from "./Skills.module.scss";
+import Layout from "@/components/Layout/Layout";
 import Top from "@/components/Layout/Top/Top";
 import Footer from "@/components/Layout/Footer/Footer";
 
-export default function Home() {
+const Skills = () => {
   return (
     <>
       <Layout>
@@ -14,4 +15,6 @@ export default function Home() {
       <Footer />
     </>
   );
-}
+};
+
+export default Skills;
