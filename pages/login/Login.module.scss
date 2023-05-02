@@ -8,9 +8,15 @@
   min-height: 75vh;
   color: $main-gray;
   &_Box_Button {
-    background-color: $main-blue;
-    color: #fff;
-    font-weight: 600;
+    font-weight: 600 !important;
+    background-color: #fff !important;
+    border: 2px solid #0046c9 !important;
+    color: $main-blue !important;
+    &:hover {
+      font-weight: 600 !important;
+      background-color: $main-blue !important;
+      color: #fff !important;
+    }
   }
   &_Box_Link {
     margin: 20px;

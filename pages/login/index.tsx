@@ -34,22 +34,22 @@ const index = () => {
     setIsFocused(false);
   };
 
-  const ButtonSpace = styled("div")({
-    marginRight: "20px",
-  });
+  // const ButtonSpace = styled("div")({
+  //   marginRight: "20px",
+  //   width: "100%",
+  // });
   
-  const StyledButton = styled(Button)(({ theme }) => ({
-    backgroundColor: "#fff",
-    border: "2px solid #0046c9",
-    color: "#002A76",
-    fontWeight: "600",
-    width: "100%",
-    "&:hover": {
-      backgroundColor: "#002A76",
-      color: "#fff",
-      fontWeight: "600",
-    },
-  }));
+  // const StyledButton = styled(Button)(({ theme }) => ({
+  //   backgroundColor: "#fff",
+  //   border: "2px solid #0046c9",
+  //   color: "#002A76",
+  //   fontWeight: "600",
+  //   "&:hover": {
+  //     backgroundColor: "#002A76",
+  //     color: "#fff",
+  //     fontWeight: "600",
+  //   },
+  // }));
 
   return (
     <>
@@ -119,7 +119,7 @@ const index = () => {
                 ),
               }}
             />
-            {/* <Button
+            <Button
               className={styles.Login_Box_Button}
               type="submit"
               fullWidth
@@ -128,10 +128,10 @@ const index = () => {
               sx={{ mt: 3, mb: 2 }}
             >
               Sign In
-            </Button> */}
-            <ButtonSpace>
+            </Button>
+            {/* <ButtonSpace>
                 <StyledButton variant="contained">Sign in</StyledButton>
-            </ButtonSpace>
+            </ButtonSpace> */}
             <Link
               href="/login/forgotPassword"
               className={styles.Login_Box_Link}
