@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Top.module.scss";
+import styles from "./SkillSet.module.scss";
 import Image from "next/image";
 
 const Top = () => {

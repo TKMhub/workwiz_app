@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Button, TextField, Box, Typography, Snackbar } from "@mui/material";
 import styles from "./Contact.module.scss";
 import Layout from "@/components/Layout/Layout";
-import Footer from "@/components/Layout/Footer/Footer";
+import Footer from "@/components/Footer/Footer";
 import Alert from "@mui/material/Alert";
 
 type FormData = {
@@ -115,6 +115,7 @@ const index = () => {
               onChange={handleChange} // 入力時にhandleChange関数を実行
             />
             <Button
+              className={styles.ContactForm_button}
               type="submit"
               fullWidth
               variant="contained"

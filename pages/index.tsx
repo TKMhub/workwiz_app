@@ -1,14 +1,14 @@
 import styles from "./Home.module.scss";
 import Layout from "../components/Layout/Layout";
-import Top from "@/components/Layout/Top/Top";
-import Footer from "@/components/Layout/Footer/Footer";
+import SkillSet from "@/components/SkillSet/SkillSet";
+import Footer from "@/components/Footer/Footer";
 
 export default function Home() {
   return (
     <>
       <Layout>
         <main className={styles.Home}>
-          <Top />
+          <SkillSet />
         </main>
       </Layout>
       <Footer />
