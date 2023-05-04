@@ -26,8 +26,9 @@ export default async function handler(
 
     // メールの内容を設定
     const mailOptions = {
-      from: email,
+      from: process.env.EMAIL_USER, // 認証されたメールアドレスを送信者として設定
       to: process.env.EMAIL_TO, // 宛先のメールアドレス
+      replyTo: email, // フォームに入力されたメールアドレスを Reply-To に設定
       subject: `Contact from ${name}`,
       text: message,
     };

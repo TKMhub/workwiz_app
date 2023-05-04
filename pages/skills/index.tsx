@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./Skills.module.scss";
-import Layout from "@/components/Layout/Layout";
-import Top from "@/components/SkillSet/SkillSet";
-import Footer from "@/components/Footer/Footer";
+import Layout from "@/components/Layout";
+import Top from "@/components/SkillSet";
+import Footer from "@/components/Footer";
 
 const Skills = () => {
   return (

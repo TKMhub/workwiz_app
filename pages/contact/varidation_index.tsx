@@ -1,22 +1,30 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import { Button, TextField, Box, Typography, Snackbar } from "@mui/material";
-import styles from "./Contact.module.scss";
+import { Button, Box, Typography, Snackbar } from "@mui/material";
 import Layout from "@/components/Layout";
 import Footer from "@/components/Footer";
 import Alert from "@mui/material/Alert";
+import FormTextField from "@/components/FormTextField";
+import styles from "./Contact.module.scss";
 
 type FormData = {
-    name: string;
-    email: string;
-    message: string;
-  };
+  name: string | null;
+  email: string | null;
+  message: string | null;
+};
 
 const index = () => {
-    const [formData, setFormData] = useState<FormData>({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    message: "",
+  });
   const [openSnackbar, setOpenSnackbar] = useState<boolean>(false);
   const [snackbarMessage, setSnackbarMessage] = useState<string>("");
-  const [snackbarSeverity, setSnackbarSeverity] = useState<"success" | "error">("success");
-  const handleSubmit = async (e: FormEvent) => {
+  const [snackbarSeverity, setSnackbarSeverity] = useState<"success" | "error">(
+    "success"
+  );
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -47,6 +55,37 @@ const index = () => {
   const handleCloseSnackbar = () => {
     setOpenSnackbar(false);
   };
+
+  const validateForm = () => {
+    let errors: Partial<FormData> = {
+      name: null,
+      email: null,
+      message: null,
+    };
+
+    if (!formData.name) {
+      errors = { ...errors, name: "Please enter your name" };
+    }
+
+    if (!formData.email) {
+      errors = { ...errors, email: "Please enter your email address" };
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      errors = { ...errors, email: "Please enter a valid email address" };
+    }
+
+    if (!formData.message) {
+      errors = { ...errors, message: "Please enter your message" };
+    }
+
+    return errors;
+  };
+
+  const errors = validateForm();
+
+  const isNameError = !!errors["name"];
+  const isEmailError = !!errors["email"];
+  const isMessageError = !!errors["message"];
+
   return (
     <>
       <Layout>
@@ -66,59 +105,42 @@ const index = () => {
               borderRadius: 1,
               bgcolor: "background.paper",
             }}
-            onSubmit={handleSubmit} // handleSubmit関数を追加
+            onSubmit={handleSubmit}
             noValidate
           >
             <Typography component="h1" variant="h5" mb={3}>
               Contact Us
             </Typography>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="name"
-              label="Name"
+            <FormTextField
+              label="名前"
               name="name"
-              autoComplete="name"
-              autoFocus
-              sx={{ mb: 2 }}
-              value={formData.name} // stateの値を設定
-              onChange={handleChange} // 入力時にhandleChange関数を実行
+              value={formData.name}
+              error={errors["name"]}
+              onChange={handleChange}
             />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
+            <FormTextField
+              label="メールアドレス"
               name="email"
-              autoComplete="email"
-              sx={{ mb: 2 }}
-              value={formData.email} // stateの値を設定
-              onChange={handleChange} // 入力時にhandleChange関数を実行
+              value={formData.email}
+              error={errors["email"]}
+              onChange={handleChange}
             />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="message"
-              label="Message"
+            <FormTextField
+              label="メッセージ"
               name="message"
+              value={formData.message}
+              error={errors["message"]}
+              onChange={handleChange}
               multiline
               rows={4}
-              sx={{ mb: 2 }}
-              value={formData.message} // stateの値を設定
-              onChange={handleChange} // 入力時にhandleChange関数を実行
             />
+
             <Button
-              className={styles.ContactForm_button}
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
+              disabled={isNameError || isEmailError || isMessageError}
               sx={{ mt: 3, mb: 2 }}
             >
               Send Message
@@ -126,6 +148,7 @@ const index = () => {
           </Box>
         </div>
       </Layout>
+
       <Footer />
       <Snackbar
         open={openSnackbar}
@@ -133,10 +156,14 @@ const index = () => {
         onClose={handleCloseSnackbar}
         anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
       >
-        <Alert onClose={handleCloseSnackbar} severity={snackbarSeverity} sx={{ width: "100%" }}>
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity={snackbarSeverity}
+          sx={{ width: "100%" }}
+        >
           {snackbarMessage}
         </Alert>
-        </Snackbar>
+      </Snackbar>
     </>
   );
 };

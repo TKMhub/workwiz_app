@@ -1,5 +1,5 @@
-import Footer from '@/components/Footer/Footer'
-import Layout from '@/components/Layout/Layout'
+import Footer from '@/components/Footer'
+import Layout from '@/components/Layout'
 import React from 'react'
 
 const blog = () => {

@@ -1,7 +1,7 @@
 import styles from "./Home.module.scss";
-import Layout from "../components/Layout/Layout";
-import SkillSet from "@/components/SkillSet/SkillSet";
-import Footer from "@/components/Footer/Footer";
+import Layout from "../components/Layout";
+import SkillSet from "@/components/SkillSet";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
