@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { login, get_nickname } from "@/pages/api/apiClient";
 import {
   Button,
   TextField,
@@ -12,11 +13,35 @@ import Layout from "@/components/Layout";
 import styles from "./Login.module.scss";
 import Link from "next/link";
 
-import { styled } from "@mui/system";
-
 const index = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+  const [userId, setUserId] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleChangeUserId = (event:any) => {
+    setUserId(event.target.value);
+  };
+
+  const handleChangePassword = (event:any) => {
+    setPassword(event.target.value);
+  };
+
+  const handleSubmit = async (event:any): Promise<void> => {
+    event.preventDefault();
+    try {
+      console.log( 'ユーザーID:',userId);
+      console.log( 'パスワード:',password);
+      const { access_token } = await login(userId, password);
+
+      const data = await get_nickname(access_token);
+
+      console.log('ニックネーム:', data.nickname);
+    } catch (error) {
+      console.error('ログインに失敗しました:', error);
+    }
+  };
+  
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -33,23 +58,6 @@ const index = () => {
   const handleBlur = () => {
     setIsFocused(false);
   };
-
-  // const ButtonSpace = styled("div")({
-  //   marginRight: "20px",
-  //   width: "100%",
-  // });
-  
-  // const StyledButton = styled(Button)(({ theme }) => ({
-  //   backgroundColor: "#fff",
-  //   border: "2px solid #0046c9",
-  //   color: "#002A76",
-  //   fontWeight: "600",
-  //   "&:hover": {
-  //     backgroundColor: "#002A76",
-  //     color: "#fff",
-  //     fontWeight: "600",
-  //   },
-  // }));
 
   return (
     <>
@@ -71,6 +79,7 @@ const index = () => {
               borderRadius: 1,
               bgcolor: "background.paper",
             }}
+            onSubmit={handleSubmit} // ここにonSubmitイベントハンドラを追加
             noValidate
           >
             <Typography component="h1" variant="h5" mb={5}>
@@ -87,6 +96,8 @@ const index = () => {
               autoComplete="userId"
               autoFocus
               sx={{ mb: 2 }}
+              value={userId} // 状態をバインド
+            onChange={handleChangeUserId} // onChangeハンドラを追加
             />
             <TextField
               variant="outlined"
@@ -118,6 +129,8 @@ const index = () => {
                   </InputAdornment>
                 ),
               }}
+              value={password} // 状態をバインド
+            onChange={handleChangePassword} // onChangeハンドラを追加
             />
             <Button
               className={styles.Login_Box_Button}
