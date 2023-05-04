@@ -78,7 +78,7 @@ const index = () => {
               required
               fullWidth
               id="name"
-              label="Name"
+              label="氏名"
               name="name"
               autoComplete="name"
               autoFocus
@@ -92,7 +92,7 @@ const index = () => {
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label="メールアドレス"
               name="email"
               autoComplete="email"
               sx={{ mb: 2 }}
@@ -105,7 +105,7 @@ const index = () => {
               required
               fullWidth
               id="message"
-              label="Message"
+              label="メッセージ"
               name="message"
               multiline
               rows={4}
