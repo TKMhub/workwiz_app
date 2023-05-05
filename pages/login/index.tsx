@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { login, get_nickname } from "@/pages/api/apiClient";
+import React, { useState } from 'react';
 import {
   Button,
   TextField,
@@ -12,36 +11,21 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Layout from "@/components/Layout";
 import styles from "./Login.module.scss";
 import Link from "next/link";
+import loginUser from "../api/LoginUser";
 
 const index = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
-  const [userId, setUserId] = useState("");
+  const [userID, setUserID] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleChangeUserId = (event:any) => {
-    setUserId(event.target.value);
+  const handleChangeUserID = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUserID(event.target.value);
   };
 
-  const handleChangePassword = (event:any) => {
+  const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
-
-  const handleSubmit = async (event:any): Promise<void> => {
-    event.preventDefault();
-    try {
-      console.log( 'ユーザーID:',userId);
-      console.log( 'パスワード:',password);
-      const { access_token } = await login(userId, password);
-
-      const data = await get_nickname(access_token);
-
-      console.log('ニックネーム:', data.nickname);
-    } catch (error) {
-      console.error('ログインに失敗しました:', error);
-    }
-  };
-  
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -57,6 +41,16 @@ const index = () => {
 
   const handleBlur = () => {
     setIsFocused(false);
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const result = await loginUser(userID, password);
+    if (result.success) {
+      console.log('ログインに成功しました:', result.token);
+    } else {
+      console.error('ログインに失敗しました:', result.message);
+    }
   };
 
   return (
@@ -79,7 +73,7 @@ const index = () => {
               borderRadius: 1,
               bgcolor: "background.paper",
             }}
-            onSubmit={handleSubmit} // ここにonSubmitイベントハンドラを追加
+            onSubmit={handleSubmit}
             noValidate
           >
             <Typography component="h1" variant="h5" mb={5}>
@@ -90,14 +84,14 @@ const index = () => {
               margin="normal"
               required
               fullWidth
-              id="userId"
+              id="userID"
               label="ユーザーID"
-              name="userId"
-              autoComplete="userId"
+              name="userID"
+              autoComplete="userID"
               autoFocus
               sx={{ mb: 2 }}
-              value={userId} // 状態をバインド
-            onChange={handleChangeUserId} // onChangeハンドラを追加
+              value={userID}
+              onChange={handleChangeUserID}
             />
             <TextField
               variant="outlined"
@@ -142,9 +136,6 @@ const index = () => {
             >
               Sign In
             </Button>
-            {/* <ButtonSpace>
-                <StyledButton variant="contained">Sign in</StyledButton>
-            </ButtonSpace> */}
             <Link
               href="/login/forgotPassword"
               className={styles.Login_Box_Link}
