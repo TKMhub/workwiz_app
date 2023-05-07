@@ -50,11 +50,17 @@ const index = () => {
     event.preventDefault();
     const result = await loginUser(userID, password);
     if (result.success) {
-      console.log('ログインに成功しました:', result.token);
-      router.push('/pdfup');
+      if (result.token) { 
+        console.log('ログインに成功しました:', result.token);
+        localStorage.setItem("token", result.token);
+        router.push('/pdfup');
+      } else {
+        console.error('トークンが取得できませんでした');
+      }
     } else {
       console.error('ログインに失敗しました:', result.message);
     }
+    
   };
 
   return (

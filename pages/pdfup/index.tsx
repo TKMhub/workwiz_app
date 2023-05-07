@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { saveAs } from 'file-saver';
 import React, { ChangeEvent } from 'react';
+import { GetServerSideProps } from 'next';
+import nookies from 'nookies';
 
 const handleFileUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     // アップロードされたファイルを取得
@@ -35,5 +37,23 @@ const index = () => {
     </div>
   );
 };
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const cookies = nookies.get(context);
+    const token = cookies.token;
+  
+    if (!token) {
+      return {
+        redirect: {
+          destination: '/login',
+          permanent: false,
+        },
+      };
+    }
+  
+    return {
+      props: {},
+    };
+  };
 
 export default index;
