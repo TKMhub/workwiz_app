@@ -12,12 +12,15 @@ import Layout from "@/components/Layout";
 import styles from "./Login.module.scss";
 import Link from "next/link";
 import loginUser from "../api/LoginUser";
+import { useRouter } from 'next/router';
 
 const index = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [userID, setUserID] = useState("");
   const [password, setPassword] = useState("");
+
+  const router = useRouter();
 
   const handleChangeUserID = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserID(event.target.value);
@@ -48,6 +51,7 @@ const index = () => {
     const result = await loginUser(userID, password);
     if (result.success) {
       console.log('ログインに成功しました:', result.token);
+      router.push('/pdfup');
     } else {
       console.error('ログインに失敗しました:', result.message);
     }
