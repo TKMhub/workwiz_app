@@ -1,9 +1,10 @@
 @import "@/styles/globals.module.scss";
 
 .Footer {
+    text-align: center;
     background-color: $main-blue;
     color: #fff;
-    padding: 40px 0;
+    padding: 60px 0;
     &_Inner {
       width: 100%;
       max-width: 1280px;

@@ -6,21 +6,20 @@ const Footer = () => {
     <>
       <footer>
         <div className={styles.Footer}>
-          <div className={styles.Footer_Inner}>
+          {/* <div className={styles.Footer_Inner}>
             <div className={styles.Footer_Inner_Box}>
               <div className={styles.Footer_Inner_Box_Title}>
-                <h3>会社概要</h3>
-              </div>
-              <div className={styles.Footer_Inner_Box_Content}>
-                <p>会社名：株式会社○○○○</p>
-
-                <p>
-                  所在地：〒000-0000 東京都��
+                <h3>概要</h3>
+              </div> */}
+              {/* <div className={styles.Footer_Inner_Box_Content}> */}
+                <p>hotLib</p>
+                {/* <p>
+                  
                   <br />
                 </p>
               </div>
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
         </div>
       </footer>
     </>
