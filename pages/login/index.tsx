@@ -13,6 +13,7 @@ import styles from "./Login.module.scss";
 import Link from "next/link";
 import loginUser from "../api/LoginUser";
 import { useRouter } from 'next/router';
+import Cookie from 'js-cookie';
 
 const index = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -53,6 +54,7 @@ const index = () => {
       if (result.token) { 
         console.log('ログインに成功しました:', result.token);
         localStorage.setItem("token", result.token);
+        Cookie.set('token', result.token, { path: '/' });
         router.push('/pdfup');
       } else {
         console.error('トークンが取得できませんでした');

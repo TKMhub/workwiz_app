@@ -20,7 +20,6 @@ function isAxiosError(error: unknown): error is AxiosError {
 
 async function loginUser(userID: string, password: string): Promise<LoginResult> {
   try {
-    console.log( 'userID + password' + userID +' '+ password )
     const response = await axios.post<LoginResponse>('http://127.0.0.1:8000/api/login/', {
       userID,
       password,
