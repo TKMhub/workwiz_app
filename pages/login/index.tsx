@@ -11,7 +11,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Layout from "@/components/Layout";
 import styles from "./Login.module.scss";
 import Link from "next/link";
-import loginUser from "../api/LoginUser";
+import loginUser from "../api/login";
 import { useRouter } from 'next/router';
 import Cookie from 'js-cookie';
 
