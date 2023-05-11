@@ -3,6 +3,9 @@
 .Top{
     // background-color: aquamarine;
     margin: 100px;
+    &_Header {
+        margin-bottom: 20px;
+    }
     &_TechSelection {
         &_Contents{
             margin: 50px;

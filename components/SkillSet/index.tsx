@@ -7,6 +7,10 @@ const Top = () => {
     <>
       <div className={styles.Top}>
         <div className={styles.Top_TechSelection}>
+          <div className={styles.Top_TechSelection_Header}>
+            <h1>スキルセット</h1><br/>
+            <p>Workwizで使用されているツール紹介</p>
+          </div>
           <div className={styles.Top_TechSelection_Contents}>
             <h2>フロントエンド</h2>
             <br />
