@@ -1,16 +1,14 @@
 import axios from "axios";
 import { saveAs } from "file-saver";
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, useRef, useState } from "react";
 import { GetServerSideProps } from "next";
 import nookies from "nookies";
 import Layout from "@/components/Layout";
 import styles from "./loginAfterFst.module.scss";
+import { Button, Typography } from "@mui/material";
+import { CloudUpload } from "@mui/icons-material";
 
-const handleFileUpload = async (event: ChangeEvent<HTMLInputElement>) => {
-  // アップロードされたファイルを取得
-  const pdfFile = event.target.files && event.target.files[0];
-  if (!pdfFile) return;
-
+const handleFileUpload = async (pdfFile: File) => {
   // FormDataオブジェクトを作成し、PDFファイルを追加
   const formData = new FormData();
   formData.append("pdf", pdfFile);
@@ -31,11 +29,77 @@ const handleFileUpload = async (event: ChangeEvent<HTMLInputElement>) => {
   saveAs(blob, "converted.xlsx");
 };
 
+const onFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+  if (event.target.files && event.target.files[0]) {
+    handleFileUpload(event.target.files[0]);
+  }
+};
+
+const onDrop = (event: React.DragEvent<HTMLDivElement>) => {
+  event.preventDefault();
+  if (event.dataTransfer.files && event.dataTransfer.files[0]) {
+    handleFileUpload(event.dataTransfer.files[0]);
+  }
+};
+
 const index = () => {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [isActive, setIsActive] = useState(false);
+
+  const onDragEnter = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    setIsActive(true);
+  };
+
+  const onDragLeave = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    setIsActive(false);
+  };
+
+  const onDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    if (event.dataTransfer.files && event.dataTransfer.files[0]) {
+      handleFileUpload(event.dataTransfer.files[0]);
+    }
+    setIsActive(false); // ドロップ時にアクティブ状態を解除
+  };
+
   return (
     <Layout>
       <div className={styles.loginAfterFst}>
-        <input type="file" accept="application/pdf" onChange={handleFileUpload} />
+        <input
+          ref={inputRef}
+          type="file"
+          accept="application/pdf"
+          onChange={onFileChange}
+          hidden
+        />
+        <div
+          onDrop={onDrop}
+          onDragEnter={onDragEnter}
+          onDragLeave={onDragLeave}
+          onDragOver={(event) => event.preventDefault()}
+          style={{
+            border: "2px dashed #ccc",
+            borderRadius: "5px",
+            padding: "100px",
+            textAlign: "center",
+            backgroundColor: isActive ? "#eee" : "#fff", // ドロップ時に背景色を変更
+          }}
+        >
+          <CloudUpload fontSize="large" />
+          <Typography variant="body1">
+            ドラッグアンドドロッップまたは
+          </Typography>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => inputRef.current?.click()}
+            style={{ marginTop: "10px" }}
+          >
+            ファイルを選択
+          </Button>
+        </div>
       </div>
     </Layout>
   );
