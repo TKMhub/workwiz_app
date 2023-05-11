@@ -3,10 +3,10 @@
 .Top{
     // background-color: aquamarine;
     margin: 100px;
-    &_Header {
-        margin: 10px;
-    }
     &_TechSelection {
+        &_Header {
+            margin: 150px 40px 40px 40px;
+        }
         &_Contents{
             margin: 50px;
             margin-bottom: 20px;
