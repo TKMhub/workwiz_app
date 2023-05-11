@@ -3,6 +3,8 @@ import { saveAs } from "file-saver";
 import React, { ChangeEvent } from "react";
 import { GetServerSideProps } from "next";
 import nookies from "nookies";
+import Layout from "@/components/Layout";
+import styles from "./loginAfterFst.module.scss";
 
 const handleFileUpload = async (event: ChangeEvent<HTMLInputElement>) => {
   // アップロードされたファイルを取得
@@ -31,9 +33,11 @@ const handleFileUpload = async (event: ChangeEvent<HTMLInputElement>) => {
 
 const index = () => {
   return (
-    <div>
-      <input type="file" accept="application/pdf" onChange={handleFileUpload} />
-    </div>
+    <Layout>
+      <div className={styles.loginAfterFst}>
+        <input type="file" accept="application/pdf" onChange={handleFileUpload} />
+      </div>
+    </Layout>
   );
 };
 
