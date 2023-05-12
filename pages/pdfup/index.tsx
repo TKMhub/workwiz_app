@@ -14,13 +14,13 @@ const handleFileUpload = async (pdfFile: File) => {
   formData.append("pdf", pdfFile);
 
   // APIリクエストを送信し、変換されたExcelファイルをblobとして受け取る
-  const response = await axios.post("/api/convert_pdf_to_excel/", formData, {
+  const response = await axios.post("http://localhost:8000/api/convert_pdf_to_excel/", formData, {
     headers: {
       "Content-Type": "multipart/form-data",
       Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
     },
     responseType: "blob",
-  });
+});
 
   // BlobをExcelファイルとして保存
   const blob = new Blob([response.data], {
@@ -109,14 +109,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = nookies.get(context);
   const token = cookies.token;
 
-  // if (!token) {
-  //   return {
-  //     redirect: {
-  //       destination: "/login",
-  //       permanent: false,
-  //     },
-  //   };
-  // }
+  if (!token) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: {},
