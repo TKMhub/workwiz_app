@@ -35,6 +35,16 @@ const Top = () => {
               (React)は、Facebookが開発した人気のJavaScriptライブラリで、コンポーネントベースの開発を実現します。開発効率の向上と保守性の高いコードを提供し、アプリケーションの拡張性が向上します。さらに、Virtual
               DOMを利用した高速な描画性能を提供し、パフォーマンスも最適化されます。
             </p>
+            <p>
+              <Image
+                src="/typescript.svg"
+                alt="typescript Logo"
+                width={130}
+                height={60}
+                priority
+              />
+              (TypeScript)は、JavaScriptのスーパーセットで、堅牢な静的型付けを提供するプログラミング言語です。型安全性により、ランタイムエラーを大幅に削減し、コードの理解とリファクタリングを容易にします。加えて、先進的な機能やツールサポートにより、大規模なコードベースの管理がより効率的になります。そのため、エンタープライズレベルのアプリケーション開発において、品質と生産性の向上を約束します。
+            </p>
           </div>
           <div className={styles.Top_TechSelection_Contents}>
             <h2>スタイル</h2>
