@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Button, Box, Typography, Snackbar } from "@mui/material";
-import Layout from "@/components/Layout";
+import Layout from "@/components/LayoutLoginBefore";
 import Footer from "@/components/Footer";
 import Alert from "@mui/material/Alert";
 import FormTextField from "@/components/FormTextField";

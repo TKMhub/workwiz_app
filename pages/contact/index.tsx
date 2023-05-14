@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Button, TextField, Box, Typography, Snackbar } from "@mui/material";
 import styles from "./Contact.module.scss";
-import Layout from "@/components/Layout";
+import Layout from "@/components/LayoutLoginBefore";
 import Footer from "@/components/Footer";
 import Alert from "@mui/material/Alert";
 

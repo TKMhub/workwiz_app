@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Skills.module.scss";
-import Layout from "@/components/Layout";
+import Layout from "@/components/LayoutLoginBefore";
 import Top from "@/components/SkillSet";
 import Footer from "@/components/Footer";
 

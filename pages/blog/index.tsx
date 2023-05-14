@@ -1,5 +1,5 @@
 import Footer from '@/components/Footer'
-import Layout from '@/components/Layout'
+import Layout from '@/components/LayoutLoginBefore'
 import styles from './Blog.module.scss'
 import React from 'react'
 

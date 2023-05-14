@@ -2,7 +2,7 @@ import React from "react";
 import { Button, TextField, Box, Typography } from "@mui/material";
 import Link from "next/link";
 import styles from "./Login.module.scss";
-import Layout from "@/components/Layout";
+import Layout from "@/components/LayoutLoginBefore";
 
 const forgotPassword = () => {
   return (

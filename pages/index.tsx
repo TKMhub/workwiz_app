@@ -1,5 +1,5 @@
 import styles from "./Home.module.scss";
-import Layout from "../components/Layout";
+import Layout from "../components/LayoutLoginBefore";
 import SkillSet from "@/components/SkillSet";
 import Footer from "@/components/Footer";
 

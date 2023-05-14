@@ -8,7 +8,7 @@ import {
   InputAdornment,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import Layout from "@/components/Layout";
+import Layout from "@/components/LayoutLoginBefore";
 import styles from "./Login.module.scss";
 import Link from "next/link";
 
