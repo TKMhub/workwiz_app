@@ -20,7 +20,7 @@ const handleFileUpload = async (pdfFile: File) => {
       Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
     },
     responseType: "blob",
-});
+  });
 
   // BlobをExcelファイルとして保存
   const blob = new Blob([response.data], {

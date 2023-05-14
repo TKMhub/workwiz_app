@@ -1,7 +1,8 @@
 import axios, { AxiosError } from 'axios';
 
 interface LoginResponse {
-  token: string;
+  refresh: string;
+  access: string;
 }
 
 interface ErrorData {
@@ -26,11 +27,8 @@ async function loginUser(userID: string, password: string): Promise<LoginResult>
     });
 
     if (response.status === 200) {
-      const { token } = response.data;
-      localStorage.setItem('jwtToken', token);
-      // トークンを保存し、ログイン状態を管理します（localStorageやCookieなど）
-      // トークンを保存し、ログイン状態を管理します（localStorageやCookieなど）
-      // トークンを保存し、ログイン状態を管理します（localStorageやCookieなど）
+      const token = response.data.access;
+      localStorage.setItem('jwtToken', token); // Store the token in local storage
       return { success: true, token };
     }
   } catch (error) {
