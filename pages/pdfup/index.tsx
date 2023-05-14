@@ -2,7 +2,8 @@ import axios from "axios";
 import { saveAs } from "file-saver";
 import React, { ChangeEvent, useRef, useState } from "react";
 import { GetServerSideProps } from "next";
-import nookies from "nookies";
+import { parseCookies } from "nookies";
+// import nookies from "nookies";
 import Layout from "@/components/LayoutLoginAfter";
 import styles from "./loginAfterFst.module.scss";
 import { Button, Typography } from "@mui/material";
@@ -108,8 +109,25 @@ const index = () => {
   );
 };
 
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//   const cookies = nookies.get(context);
+//   const token = cookies.token;
+
+//   if (!token) {
+//     return {
+//       redirect: {
+//         destination: "/login",
+//         permanent: false,
+//       },
+//     };
+//   }
+
+//   return {
+//     props: {},
+//   };
+// };
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const cookies = nookies.get(context);
+  const cookies = parseCookies(context);
   const token = cookies.token;
 
   if (!token) {
