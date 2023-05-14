@@ -39,6 +39,7 @@ export const Header = () => {
               <Button
                 className={styles.Header_right_item_buttonSpace_button}
                 variant="contained"
+                style={{ width: '80px', height: '40px' }}
               >
                 Login
               </Button>
@@ -50,6 +51,7 @@ export const Header = () => {
               <Button
                 className={styles.Header_right_item_buttonSpace_button}
                 variant="contained"
+                style={{ width: '80px', height: '40px' }}
               >
                 新規
               </Button>
