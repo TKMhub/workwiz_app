@@ -108,22 +108,22 @@ const index = () => {
   );
 };
 
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//   const cookies = nookies.get(context);
-//   const token = cookies.token;
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const cookies = nookies.get(context);
+  const token = cookies.token;
 
-//   if (!token) {
-//     return {
-//       redirect: {
-//         destination: "/login",
-//         permanent: false,
-//       },
-//     };
-//   }
+  if (!token) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
 
-//   return {
-//     props: {},
-//   };
-// };
+  return {
+    props: {},
+  };
+};
 
 export default index;
