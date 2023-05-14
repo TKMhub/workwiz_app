@@ -3,7 +3,7 @@ import { saveAs } from "file-saver";
 import React, { ChangeEvent, useRef, useState } from "react";
 import { GetServerSideProps } from "next";
 import nookies from "nookies";
-import Layout from "@/components/LayoutLoginBefore";
+import Layout from "@/components/LayoutLoginAfter";
 import styles from "./loginAfterFst.module.scss";
 import { Button, Typography } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
