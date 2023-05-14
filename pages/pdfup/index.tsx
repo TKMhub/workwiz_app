@@ -8,13 +8,16 @@ import styles from "./loginAfterFst.module.scss";
 import { Button, Typography } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
 const handleFileUpload = async (pdfFile: File) => {
   // FormDataオブジェクトを作成し、PDFファイルを追加
   const formData = new FormData();
   formData.append("pdf", pdfFile);
 
   // APIリクエストを送信し、変換されたExcelファイルをblobとして受け取る
-  const response = await axios.post("http://localhost:8000/api/convert_pdf_to_excel/", formData, {
+  // const response = await axios.post("http://localhost:8000/api/convert_pdf_to_excel/", formData, {
+  const response = await axios.post(`${API_URL}/api/convert_pdf_to_excel/`, formData, {
     headers: {
       "Content-Type": "multipart/form-data",
       Authorization: `Bearer ${localStorage.getItem("token")}`,

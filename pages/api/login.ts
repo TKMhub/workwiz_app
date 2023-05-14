@@ -1,5 +1,7 @@
 import axios, { AxiosError } from 'axios';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
 interface LoginResponse {
   refresh: string;
   access: string;
@@ -21,7 +23,7 @@ function isAxiosError(error: unknown): error is AxiosError {
 
 async function loginUser(userID: string, password: string): Promise<LoginResult> {
   try {
-    const response = await axios.post<LoginResponse>('http://127.0.0.1:8000/api/login/', {
+    const response = await axios.post<LoginResponse>(`${API_URL}/api/login/`, {
       userID,
       password,
     });
