@@ -17,7 +17,7 @@ const handleFileUpload = async (pdfFile: File) => {
   const response = await axios.post("http://localhost:8000/api/convert_pdf_to_excel/", formData, {
     headers: {
       "Content-Type": "multipart/form-data",
-      Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
     responseType: "blob",
   });
