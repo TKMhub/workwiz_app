@@ -129,8 +129,10 @@ const index = () => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = parseCookies(context);
   const token = cookies.token;
-
+  console.log("処理①"+token);
+  
   if (!token) {
+    console.log("処理②"+token);
     return {
       redirect: {
         destination: "/login",
