@@ -1,13 +1,15 @@
 import axios from "axios";
 import { saveAs } from "file-saver";
-import React, { ChangeEvent, useRef, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { GetServerSideProps } from "next";
+import { GetStaticProps, GetStaticPaths } from 'next';
 import { parseCookies } from "nookies";
-// import nookies from "nookies";
+import nookies from "nookies";
 import Layout from "@/components/LayoutLoginAfter";
 import styles from "./loginAfterFst.module.scss";
 import { Button, Typography } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
+import { useRouter } from "next/router";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
@@ -47,8 +49,19 @@ const onDrop = (event: React.DragEvent<HTMLDivElement>) => {
 };
 
 const index = () => {
+  // const router = useRouter();
+  // const cookies = parseCookies();
+  // const token = cookies.token;
+
+  // useEffect(() => {
+  //   if (!token) {
+  //     router.push("/login");
+  //   }
+  // }, [token, router]);
+
   const inputRef = useRef<HTMLInputElement>(null);
   const [isActive, setIsActive] = useState(false);
+  
 
   const onDragEnter = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
@@ -109,30 +122,13 @@ const index = () => {
   );
 };
 
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//   const cookies = nookies.get(context);
-//   const token = cookies.token;
-
-//   if (!token) {
-//     return {
-//       redirect: {
-//         destination: "/login",
-//         permanent: false,
-//       },
-//     };
-//   }
-
-//   return {
-//     props: {},
-//   };
-// };
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const cookies = parseCookies(context);
+  console.log("context", context);
+  const cookies = nookies.get(context);
   const token = cookies.token;
-  console.log("処理①"+token);
-  
+  console.log("token", token);
+
   if (!token) {
-    console.log("処理②"+token);
     return {
       redirect: {
         destination: "/login",
