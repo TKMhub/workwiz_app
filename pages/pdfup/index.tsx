@@ -1,15 +1,13 @@
 import axios from "axios";
 import { saveAs } from "file-saver";
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
-import { GetServerSideProps } from "next";
-import { GetStaticProps, GetStaticPaths } from 'next';
 import { parseCookies } from "nookies";
-import nookies from "nookies";
 import Layout from "@/components/LayoutLoginAfter";
 import styles from "./loginAfterFst.module.scss";
 import { Button, Typography } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
 import { useRouter } from "next/router";
+import Loader from "@/components/Loader";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
@@ -49,15 +47,18 @@ const onDrop = (event: React.DragEvent<HTMLDivElement>) => {
 };
 
 const index = () => {
-  // const router = useRouter();
-  // const cookies = parseCookies();
-  // const token = cookies.token;
+  const router = useRouter();
+  const cookies = parseCookies();
+  const token = cookies.token;
+  const [loading, setLoading] = useState(true); // ローディング状態を追加
 
-  // useEffect(() => {
-  //   if (!token) {
-  //     router.push("/login");
-  //   }
-  // }, [token, router]);
+  useEffect(() => {
+    if (!token) {
+      router.push("/login");
+    } else {
+      setLoading(false); // トークンが存在する場合、ローディングを終了
+    }
+  }, [token, router]);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const [isActive, setIsActive] = useState(false);
@@ -83,14 +84,17 @@ const index = () => {
 
   return (
     <Layout>
-      <div className={styles.loginAfterFst}>
+      {loading ? (
+        <Loader /> // ローディング中はスピナーを表示
+      ) : (
+        <div className={styles.loginAfterFst}>
         <input
           ref={inputRef}
           type="file"
           accept="application/pdf"
           onChange={onFileChange}
           hidden
-        />
+          />
         <div
           onDrop={onDrop}
           onDragEnter={onDragEnter}
@@ -103,7 +107,7 @@ const index = () => {
             textAlign: "center",
             backgroundColor: isActive ? "#eee" : "#fff", // ドロップ時に背景色を変更
           }}
-        >
+          >
           <CloudUpload fontSize="large" />
           <Typography variant="body1">
             ドラッグアンドドロッップまたは
@@ -113,33 +117,14 @@ const index = () => {
             color="primary"
             onClick={() => inputRef.current?.click()}
             style={{ marginTop: "10px" }}
-          >
+            >
             ファイルを選択
           </Button>
         </div>
       </div>
+    )}
     </Layout>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  console.log("context", context);
-  const cookies = nookies.get(context);
-  const token = cookies.token;
-  console.log("token", token);
-
-  if (!token) {
-    return {
-      redirect: {
-        destination: "/login",
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: {},
-  };
 };
 
 export default index;
