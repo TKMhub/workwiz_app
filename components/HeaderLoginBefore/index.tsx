@@ -8,7 +8,7 @@ export const Header = () => {
   return (
     <>
       <div className={styles.Header}>
-        <Link href="/" className={styles.Header_link}>
+        <Link href="/loginFst" className={styles.Header_link}>
           <Image
             className={styles.Header_WorkwizTop}
             src="/Workwiz_top.svg"
