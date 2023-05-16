@@ -11,10 +11,21 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Layout from "@/components/LayoutLoginBefore";
 import styles from "./Login.module.scss";
 import Link from "next/link";
+import axios from 'axios';
+import Cookie from 'js-cookie';
+import { Router, useRouter } from "next/router";
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+  
+  const [email, setEmail] = useState("");
+  const [userID, setUserID] = useState("");
+  const [password, setPassword] = useState("");
+
+  const router = useRouter();
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -31,6 +42,27 @@ const SignUp = () => {
   const handleBlur = () => {
     setIsFocused(false);
   };
+
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(`${API_URL}/create_user/`, {
+        email,
+        userID,
+        password
+      });
+      console.log("新規 成功" + response.data);
+      if (response.data.refresh && response.data.access) {
+        // Save the JWT token and redirect to /pdfup
+        localStorage.setItem("token", response.data.access);
+        Cookie.set('token', response.data.access, { path: '/' });
+        router.push('/pdfup');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+};
 
   return (
     <Layout>
@@ -52,6 +84,7 @@ const SignUp = () => {
             bgcolor: "background.paper",
           }}
           noValidate
+          onSubmit={handleSubmit}
         >
           <Typography component="h1" variant="h5" mb={3}>
             Sign Up
@@ -67,6 +100,7 @@ const SignUp = () => {
             autoComplete="email"
             autoFocus
             sx={{ mb: 2 }}
+            onChange={e => setEmail(e.target.value)}
           />
           <TextField
             variant="outlined"
@@ -79,6 +113,7 @@ const SignUp = () => {
             id="useriD"
             autoComplete="current-useriD"
             sx={{ mb: 2 }}
+            onChange={e => setUserID(e.target.value)}
           />
           <TextField
               variant="outlined"
@@ -110,6 +145,7 @@ const SignUp = () => {
                   </InputAdornment>
                 ),
               }}
+              onChange={e => setPassword(e.target.value)}
             />
           <Button
             className={styles.Login_Box_Button}
