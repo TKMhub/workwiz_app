@@ -25,9 +25,10 @@ export const Header = () => {
           <div className={styles.Header_right_item}>
             <p>{userId}</p>
             <Link
-              href="/login"
+              href="/"
               className={styles.Header_right_item_buttonSpace}
             >
+              {/* Logout機能は現状はトップ画面に戻るだけ */}
               <Button
                 className={styles.Header_right_item_buttonSpace_button}
                 variant="contained"
