@@ -27,7 +27,7 @@ const index = () => {
   // }, [token, router]);
 
   return (
-    <Layout>ガラス張りにする
+    <Layout>
       {/*  */}
       <div className={styles.loginAfter}>
         <p>ガラス張りのプレートで機能選択ができるようにする。<br/>将来的には、loginAfter/の直下に各機能を配置</p>
