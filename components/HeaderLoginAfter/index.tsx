@@ -23,7 +23,7 @@ export const Header = () => {
         </Link>
         <div className={styles.Header_right}>
           <div className={styles.Header_right_item}>
-            <p>{userId}</p>
+            <p className={styles.Header_right_item_link}>{userId}</p>
             <Link
               href="/"
               className={styles.Header_right_item_buttonSpace}
