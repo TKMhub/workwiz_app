@@ -9,6 +9,7 @@ import styles from "./loginAfterFst.module.scss";
 import { Button, Typography } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
 import { useRouter } from "next/router";
+import GlassEffect from "@/components/GlassEffect";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
@@ -28,9 +29,9 @@ const index = () => {
 
   return (
     <Layout>
-      {/*  */}
       <div className={styles.loginAfter}>
         <p>ガラス張りのプレートで機能選択ができるようにする。<br/>将来的には、loginAfter/の直下に各機能を配置</p>
+        <GlassEffect />
       </div>
     </Layout>
   );
