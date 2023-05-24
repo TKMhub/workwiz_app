@@ -8,7 +8,7 @@ interface ContentBoxProps {
 
 const index: React.FC<ContentBoxProps> = ({ href, content }) => {
   return (
-    <Link href={href}>
+    <Link href={href}  className={styles.boxLink} passHref>
       <div className={styles.box}>{content}</div>
     </Link>
   )

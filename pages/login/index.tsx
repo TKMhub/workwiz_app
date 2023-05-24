@@ -55,7 +55,7 @@ const index = () => {
         console.log('ログインに成功しました:', result.token);
         localStorage.setItem("token", result.token);
         Cookie.set('token', result.token, { path: '/' });
-        router.push('/pdfup');
+        router.push('/loginAfter');
       } else {
         console.error('トークンが取得できませんでした');
       }

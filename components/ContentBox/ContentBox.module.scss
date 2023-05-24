@@ -1,20 +1,27 @@
-.box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 200px;
-  height: 200px;
-  margin: 20px;
-  background: rgba(255, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-  color: rgb(146, 0, 0);
-  font-size: 24px;
-  text-align: center;
-  cursor: pointer;
-  transition: 0.3s;
+@import "@/styles/globals.module.scss";
+
+.boxLink {
   text-decoration: none;
-  &:hover {
-    transform: scale(1.25);
+
+  .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    background: rgba(138, 138, 138, 0.603);
+    border-radius: 10px;
+    color: $main-blue;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    font-weight: bold;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
