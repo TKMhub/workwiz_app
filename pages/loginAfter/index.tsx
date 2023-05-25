@@ -16,8 +16,7 @@ const index = () => {
   const router = useRouter();
   const cookies = parseCookies();
   const token = cookies.token;
-  const [loading, setLoading] = useState(true); // ローディング状態を追加
-
+  const [loading, setLoading] = useState(true); 
   useEffect(() => {
     if (!token) {
       router.push("/login");
@@ -29,10 +28,10 @@ const index = () => {
   return (
     <Layout>
       {loading ? (
-        <Loader /> // ローディング中はスピナーを表示
+        <Loader /> 
       ) : (
         <div className={styles.loginAfter}>
-          <ContentBox href="/pdfup" content="PDF to Excel" />
+          <ContentBox href="/pdfup" content="PtoE" />
         </div>
       )}
     </Layout>
