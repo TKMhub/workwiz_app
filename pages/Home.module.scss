@@ -2,4 +2,27 @@
 
 .Home {
     margin-top: $header-size;
+    margin: 100px;
+    &_Contents {
+        height: 50vh;
+        margin: 100px;
+        h1 {
+            border-bottom: 1.5px solid $main-blue;
+        }
+    }
+    &_title {
+        margin-top: 200px;
+        margin-bottom: 50px;
+    }
+    &_description {
+        margin: 30px;
+        p {
+            font-size: 1.5rem;
+        }
+    }
+    &_Prodacts {
+        margin: 30px;
+    }
 }
+
+
