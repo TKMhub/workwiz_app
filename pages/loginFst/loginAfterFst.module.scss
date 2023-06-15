@@ -1,0 +1,11 @@
+@import "@/styles/globals.module.scss";
+
+.loginAfterFst {
+    margin-top: $header-size;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    color: $main-gray;
+    display: flex;
+}
